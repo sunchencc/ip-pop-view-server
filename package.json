@@ -1,0 +1,19 @@
+{
+  "name": "ip_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "traceroute": "~1.0.0",
+    "nodejs-traceroute": "~2.0.1",
+    "ipinfo": "1.5.1",
+    "mtr": "0.2.1",
+    "mongodb": "~6.2.0"
+  }
+}
