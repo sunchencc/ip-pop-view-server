@@ -7,7 +7,7 @@ const mtrProcess = spawn('sudo', targetHost);
 console.time('a')
 mtrProcess.stdout.on('data', (data) => {
     console.log(`11111111mtr output:\n${data}`);
-    fs.writeFileSync('./text.txt', data, { flag: 'w+' })
+    fs.writeFileSync('./text.json', data, { flag: 'w+' })
 })
 
 mtrProcess.stderr.on('data', (data) => {

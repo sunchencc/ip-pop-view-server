@@ -1,7 +1,8 @@
-const { spawn } = require('child_process');
-const fs = require('fs')
+const { spawn} = require('child_process');
+const { MongoClientTool } = require('./MongoClient')
 class NexttraceTool {
     constructor() {
+        this.mongoClient = new MongoClientTool('fun', 'task')
     }
 
     async getRoute (host) {

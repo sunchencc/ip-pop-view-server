@@ -1,13 +1,13 @@
 const { BaseData } = require('./base/BaseData');
-const mongodb = require('mongodb')
-class MongoClient extends BaseData{
+const { MongoClient } = require('mongodb')
+class MongoClientTool extends BaseData{
     client
     db
     collection
     constructor(dbName, collection) {
         super()
         this.client = new MongoClient(`mongodb://${this.global.mongoCfg.url}:${this.global.mongoCfg.port}`)
-        this.db = this.connect(dbName)
+        this.db = this.client.db(dbName)
         this.collection = this.db.collection(collection)
     }
 
@@ -24,5 +24,6 @@ class MongoClient extends BaseData{
     }
 }
 
-const test = new MongoClient('test', 'test2')
-console.log(test.query({}))
+module.exports = {
+    MongoClientTool
+}
