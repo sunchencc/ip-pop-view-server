@@ -10,8 +10,8 @@ class NexttraceTool {
         const orders = ['nexttrace', '-j', '-M', host]
         let content = Buffer.from('')
         const mtrProcess = spawn('sudo', orders);
+
         mtrProcess.stdout.on('data', (data) => {
-            console.log('=======>', data.toString('utf-8'))
             content = Buffer.concat([content, data])
         })
 
@@ -20,12 +20,11 @@ class NexttraceTool {
         });
 
         mtrProcess.on('close', (code) => {
-            console.log('close------>')
-
-            fs.writeFileSync('./text.json', content.toString('utf-8'), { encoding: 'utf-8' })
-            console.log(content.toString('utf8'))
+            content = content.toString().split('DMIT.LAX')[1]
+            this.mongoClient.insert(content)
             console.log(`mtr process exited with code ${code}`);
         });
+
     }
 }
 const nexttraceTool = new NexttraceTool()
